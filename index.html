@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Ti | Ecos de Sangre</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+    crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <audio id="bg-music" loop>
+        <source src="Slow Dance With You - Adventure Time (Extended).mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="author-signature">
+        <span class="font-cinzel">Autor del sitio: Angel</span>
+    </div>
+
+    <div id="welcome-overlay" class="d-flex align-items-center justify-content-center">
+        <div class="text-center p-5 welcome-card fade-in-up">
+            <h1 class="mb-4 font-cinzel text-danger tracking-wide">Ecos de Sangre</h1>
+            
+            <div class="img-wrapper mb-4">
+                <img src="manos.jpg" alt="Entrar" class="img-fluid rounded-circle welcome-img border border-danger">
+            </div>
+            
+            <p class="lead mb-4 font-playfair fst-italic text-white-50">
+                "Una colección de poesía eterna, dedicada a ti."
+            </p>
+            
+            <button id="enter-btn" class="btn btn-outline-danger btn-lg rounded-0 px-5 font-cinzel">
+                Entrar
+            </button>
+        </div>
+    </div>
+
+    <div class="container-fluid h-100 p-0 overflow-hidden main-layout">
+        <div class="row h-100 g-0">
+            
+            <nav class="col-md-3 col-lg-2 d-none d-md-block sidebar p-3">
+                <div class="sidebar-header text-center mb-4">
+                    <img src="rosa.jpg" alt="Rosa" class="img-fluid rounded mb-2 border border-secondary" style="opacity: 0.8; max-height: 100px;">
+                    <h5 class="font-cinzel text-uppercase mt-2 small text-danger">Índice Prohibido</h5>
+                    <hr class="text-danger border-2 opacity-50">
+                </div>
+                
+                <div class="list-group list-group-flush" id="poem-list"></div>
+                
+                <div class="mt-auto text-center pt-4 opacity-50">
+                    <img src="besosangre.jpg" class="img-fluid rounded opacity-25" style="max-height: 80px;" alt="Decoración">
+                </div>
+            </nav>
+
+            <main class="col-12 col-md-9 col-lg-10 d-flex flex-column align-items-center justify-content-center position-relative main-content">
+                
+                <img src="fondo2rosas.jpg" id="bg-image" alt="Fondo">
+                <div class="overlay-gradient"></div>
+
+                <button class="btn btn-dark d-md-none position-absolute top-0 start-0 m-3 z-3 border-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar">
+                    <span class="font-cinzel">☰ Índice</span>
+                </button>
+
+                <div class="poem-container position-relative p-5 text-center shadow-lg mx-3">
+                    <img src="dagacorazon.jpg" class="poem-icon-top mb-3 rounded-circle border border-danger" alt="Daga">
+
+                    <div id="poem-display" class="fade-in">
+                        <h2 id="poem-title" class="font-cinzel text-uppercase mb-2 text-danger">Título</h2>
+                        <h4 id="poem-author" class="font-playfair fst-italic text-secondary mb-4 small">Autor</h4>
+                        
+                        <div class="poem-body-wrapper my-4">
+                            <p id="poem-text" class="font-playfair poem-text display-text">
+                                </p>
+                        </div>
+                        
+                        <div class="mt-3">
+                            <button id="lang-toggle" class="btn btn-sm btn-outline-secondary font-cinzel rounded-0 px-3" title="Clic para cambiar idioma">
+                                ESPAÑOL
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="nav-controls d-flex justify-content-between align-items-center w-100 position-absolute top-50 start-0 translate-middle-y px-2">
+                        <button id="prev-btn" class="nav-arrow" aria-label="Anterior">&#10094;</button>
+                        <button id="next-btn" class="nav-arrow" aria-label="Siguiente">&#10095;</button>
+                    </div>
+                </div>
+
+                <div class="music-indicator position-absolute bottom-0 end-0 p-3 d-flex align-items-center gap-2 opacity-50">
+                    <div class="equalizer">
+                        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                    </div>
+                    <span class="small font-cinzel text-white-50">Slow Dance With You</span>
+                    <img src="marceline.jpg" class="rounded-circle border border-dark" style="width: 35px; height: 35px; filter: grayscale(50%);" alt="Music">
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="offcanvasSidebar">
+        <div class="offcanvas-header border-bottom border-secondary">
+            <h5 class="offcanvas-title font-cinzel text-danger">Poemas</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body bg-black">
+            <div class="list-group list-group-flush" id="mobile-poem-list"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+
+    <script src="script.js"></script>
+</body>
+</html>
